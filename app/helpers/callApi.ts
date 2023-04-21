@@ -14,7 +14,7 @@ const callApi = () => {
 
   axiosIstance.interceptors.response.use(
     (res) => {
-      // manage validation
+      // manage vali dation
       return res;
     },
     (err) => Promise.reject(err)

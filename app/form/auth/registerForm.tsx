@@ -2,6 +2,8 @@ import { withFormik } from "formik";
 import * as yup from "yup";
 import { RegisterFormValuesInterface } from "../../contracts/auth";
 import InnerRegisterForm from "../../components/auth/innerRegisterForm";
+import callApi from "../../helpers/callApi";
+import Router from "next/router";
 
 interface RegisterFormProps {}
 
@@ -15,8 +17,10 @@ const RegisterForm = withFormik<RegisterFormProps, RegisterFormValuesInterface>(
   {
     mapPropsToValues: (props) => ({ name: "", email: "", password: "" }),
     validationSchema: registerFormValidationSchema,
-    handleSubmit: (values) => {
-      console.log(values);
+    handleSubmit: async (values) => {
+      const res = await callApi().post("/auth/register", values);
+      console.log(res);
+      if (res.status === 201) Router.push("/login");
     },
   }
 )(InnerRegisterForm);
