@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
-import RegisterForm from "../app/form/auth/registerForm";
+import { useCookies } from "react-cookie";
+import LoginFormPhone from "../../../app/form/auth/loginFormPhone";
 
-const Register: NextPage = () => {
+const LoginPhone: NextPage = () => {
+  const [cookie, setCookie] = useCookies(["shopy-token"]);
+
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -12,13 +15,13 @@ const Register: NextPage = () => {
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Create a new account
+            Sign in to your account
           </h2>
         </div>
-        <RegisterForm />
+        <LoginFormPhone onSetCookie={setCookie} />
       </div>
     </div>
   );
 };
 
-export default Register;
+export default LoginPhone;

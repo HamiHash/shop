@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
-import LoginForm from "../app/form/auth/loginForm";
 import { useCookies } from "react-cookie";
+import LoginFormPhone from "../../../app/form/auth/loginFormPhone";
 
-const Login: NextPage = () => {
-  const [cookie, setCookie] = useCookies(["shopy-token"]);
-
+const LoginPhoneStep2: NextPage = () => {
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -18,10 +16,9 @@ const Login: NextPage = () => {
             Sign in to your account
           </h2>
         </div>
-        <LoginForm onSetCookie={setCookie} />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginPhoneStep2;
