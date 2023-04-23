@@ -1,10 +1,10 @@
 import { withFormik } from "formik";
 import * as yup from "yup";
-import { RegisterFormPhoneValuesInterface } from "../../contracts/auth";
-import callApi from "../../helpers/callApi";
+import { RegisterFormPhoneValuesInterface } from "../../../contracts/auth";
+import callApi from "../../../helpers/callApi";
 import Router from "next/router";
-import InnerRegisterFormPhone from "../../components/auth/innerRegisterPhoneForm";
-import validationError from "../../exceptions/validationError";
+import InnerRegisterFormPhone from "../../../components/auth/withPhone/innerRegisterPhoneForm";
+import validationError from "../../../exceptions/validationError";
 
 interface RegisterFormPhoneProps {}
 
@@ -31,7 +31,7 @@ const RegisterFormPhone = withFormik<
     try {
       const res = await callApi().post("/auth/register", values);
       console.log(res);
-      if (res.status === 201) Router.push("/auth/loginPhone");
+      if (res.status === 201) Router.push("/auth/phone-login");
     } catch (error) {
       if (error instanceof validationError) {
         //* In the future(other projects for example), this section must change based on the type of data received from the backend

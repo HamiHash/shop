@@ -1,10 +1,10 @@
 import { withFormik } from "formik";
 import * as yup from "yup";
-import { RegisterFormValuesInterface } from "../../contracts/auth";
-import InnerRegisterForm from "../../components/auth/innerRegisterForm";
-import callApi from "../../helpers/callApi";
+import { RegisterFormValuesInterface } from "../../../contracts/auth";
+import InnerRegisterForm from "../../../components/auth/withEmail/innerRegisterForm";
+import callApi from "../../../helpers/callApi";
 import Router from "next/router";
-import validationError from "../../exceptions/validationError";
+import validationError from "../../../exceptions/validationError";
 
 interface RegisterFormProps {}
 

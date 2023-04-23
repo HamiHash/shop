@@ -1,12 +1,12 @@
 import { Form, FormikProps } from "formik";
-import Input from "../shared/input";
-import { LoginFormValuesInterface } from "../../contracts/auth";
+import { verifyFormValuesInterface } from "../../../contracts/auth";
+import Input from "../../shared/input";
 
-const InnerLoginFormPhone = (props: FormikProps<LoginFormValuesInterface>) => {
+const InnerVerifyForm = (props: FormikProps<verifyFormValuesInterface>) => {
   return (
     <Form className="space-y-6 mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <div>
-        <Input label="Phone number" name="phone" />
+        <Input label="Code" name="code" />
       </div>
 
       <div>
@@ -14,11 +14,11 @@ const InnerLoginFormPhone = (props: FormikProps<LoginFormValuesInterface>) => {
           type="submit"
           className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Login
+          Register
         </button>
       </div>
     </Form>
   );
 };
 
-export default InnerLoginFormPhone;
+export default InnerVerifyForm;

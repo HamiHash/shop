@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useCookies } from "react-cookie";
-import LoginFormPhone from "../../../app/form/auth/loginFormPhone";
+import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
+import VerifyForm from "../../../app/form/auth/withPhone/verifyFrom";
 
 const LoginPhoneStep2: NextPage = () => {
   return (
@@ -15,6 +16,8 @@ const LoginPhoneStep2: NextPage = () => {
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>
+
+          <VerifyForm />
         </div>
       </div>
     </div>

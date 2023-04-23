@@ -1,9 +1,9 @@
 import { withFormik } from "formik";
 import * as yup from "yup";
-import { LoginFormValuesInterface } from "../../contracts/auth";
-import InnerLoginForm from "../../components/auth/innerLoginForm";
-import callApi from "../../helpers/callApi";
-import validationError from "../../exceptions/validationError";
+import { LoginFormValuesInterface } from "../../../contracts/auth";
+import InnerLoginForm from "../../../components/auth/withEmail/innerLoginForm";
+import callApi from "../../../helpers/callApi";
+import validationError from "../../../exceptions/validationError";
 
 interface LoginFormProps {
   onSetCookie: any;

@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
-import RegisterForm from "../../app/form/auth/registerForm";
+import RegisterForm from "../../app/form/auth/withEmail/registerForm";
 import { useState } from "react";
-import RegisterFormPhone from "../../app/form/auth/registerFormPhone";
+import RegisterFormPhone from "../../app/form/auth/withPhone/registerFormPhone";
 
 const Register: NextPage = () => {
-  const [phone, setPhone] = useState(false);
+  const [phone, setPhone] = useState(true);
 
   return (
     <div>

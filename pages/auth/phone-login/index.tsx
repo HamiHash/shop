@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useCookies } from "react-cookie";
-import LoginFormPhone from "../../../app/form/auth/loginFormPhone";
+import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
 
 const LoginPhone: NextPage = () => {
   const [cookie, setCookie] = useCookies(["shopy-token"]);
@@ -18,6 +18,7 @@ const LoginPhone: NextPage = () => {
             Sign in to your account
           </h2>
         </div>
+
         <LoginFormPhone onSetCookie={setCookie} />
       </div>
     </div>

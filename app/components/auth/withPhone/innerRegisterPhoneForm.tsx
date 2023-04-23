@@ -1,9 +1,9 @@
 import { Form, FormikProps } from "formik";
-import { RegisterFormValuesInterface } from "../../contracts/auth";
-import Input from "../shared/input";
+import { RegisterFormPhoneValuesInterface } from "../../../contracts/auth";
+import Input from "../../shared/input";
 
 const InnerRegisterFormPhone = (
-  props: FormikProps<RegisterFormValuesInterface>
+  props: FormikProps<RegisterFormPhoneValuesInterface>
 ) => {
   return (
     <Form className="space-y-6 mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

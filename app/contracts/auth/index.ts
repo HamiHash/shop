@@ -17,3 +17,8 @@ export interface RegisterFormPhoneValuesInterface {
   phone: string;
   name: string;
 }
+
+export interface verifyFormValuesInterface {
+  code: string;
+  token: string;
+}

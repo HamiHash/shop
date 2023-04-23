@@ -1,9 +1,9 @@
 import { withFormik } from "formik";
 import * as yup from "yup";
-import { LoginFormPhoneValuesInterface } from "../../contracts/auth";
-import callApi from "../../helpers/callApi";
-import validationError from "../../exceptions/validationError";
-import InnerLoginFormPhone from "../../components/auth/innerLoginFormPhone";
+import { LoginFormPhoneValuesInterface } from "../../../contracts/auth";
+import callApi from "../../../helpers/callApi";
+import validationError from "../../../exceptions/validationError";
+import InnerLoginFormPhone from "../../../components/auth/withPhone/innerLoginFormPhone";
 import Router from "next/router";
 
 interface LoginFormProps {

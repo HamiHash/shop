@@ -1,6 +1,6 @@
 import { Form, FormikProps } from "formik";
-import { RegisterFormValuesInterface } from "../../contracts/auth";
-import Input from "../shared/input";
+import { RegisterFormValuesInterface } from "../../../contracts/auth";
+import Input from "../../shared/input";
 
 const InnerRegisterForm = (props: FormikProps<RegisterFormValuesInterface>) => {
   return (
