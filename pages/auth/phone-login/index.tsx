@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
-import { useCookies } from "react-cookie";
 import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
+import { useAppDispatch } from "../../../app/hooks";
+import { setToken } from "../../../app/store/tokenSlice";
 
 const LoginPhone: NextPage = () => {
-  const [cookie, setCookie] = useCookies(["shopy-token"]);
-
+  const dispatch = useAppDispatch();
+  const setTokenFunction = (token: string) => dispatch(setToken(token));
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -19,7 +20,7 @@ const LoginPhone: NextPage = () => {
           </h2>
         </div>
 
-        <LoginFormPhone onSetCookie={setCookie} />
+        <LoginFormPhone onSetTokenFunction={setTokenFunction} />
       </div>
     </div>
   );

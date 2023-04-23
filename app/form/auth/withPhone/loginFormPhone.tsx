@@ -7,7 +7,7 @@ import InnerLoginFormPhone from "../../../components/auth/withPhone/innerLoginFo
 import Router from "next/router";
 
 interface LoginFormProps {
-  onSetCookie: any;
+  onSetTokenFunction: (token: string) => void;
 }
 
 const phoneRegExp = /^(0|0098|\+98)9(0[1-5]|[1 3]\d|2[0-2]|98)\d{7}$/;
@@ -25,14 +25,15 @@ const LoginFormPhone = withFormik<
   handleSubmit: async (values, { props, setFieldError }) => {
     try {
       const res = await callApi().post("/auth/login", values);
-      console.log(res);
+
       if (res.status === 200) {
-        localStorage.setItem("phone-verify-token", res.data.token); //* so that we can access it in "step-two" page.
+        props.onSetTokenFunction(res.data.token);
         Router.push("/auth/phone-login/step-two");
       }
+
+      console.log(res);
     } catch (error) {
       if (error instanceof validationError) {
-        //* In the future(other projects for example), this section must change based on the type of data received from the backend
         console.log(error);
         Object.entries(error.messages).forEach(([key, value]) =>
           setFieldError(key, value as string)
@@ -40,6 +41,5 @@ const LoginFormPhone = withFormik<
       }
     }
   },
-})(InnerLoginFormPhone); //* NOTE that we used inner login form component here
-
+})(InnerLoginFormPhone);
 export default LoginFormPhone;

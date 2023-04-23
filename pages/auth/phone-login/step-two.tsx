@@ -2,8 +2,19 @@ import type { NextPage } from "next";
 import { useCookies } from "react-cookie";
 import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
 import VerifyForm from "../../../app/form/auth/withPhone/verifyFrom";
+import { useAppSelector } from "../../../app/hooks";
+import { selectToken } from "../../../app/store/tokenSlice";
+import { useEffect } from "react";
+import Router from "next/router";
 
 const LoginPhoneStep2: NextPage = () => {
+  const token = useAppSelector(selectToken);
+
+  //* So user wont access this page without a token:
+  useEffect(() => {
+    if (token === "" || undefined) Router.push("/auth/phone-login");
+  }, [token]);
+
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
