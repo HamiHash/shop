@@ -6,7 +6,10 @@ import Router from "next/router";
 import validationError from "../../../exceptions/validationError";
 import InnerVerifyForm from "../../../components/auth/withPhone/innerVerifyForm";
 
-interface verifyFormProps {}
+interface verifyFormProps {
+  onClearTokenHandler: () => void;
+  token: string;
+}
 
 const verifyFormValidationSchema = yup.object().shape({
   code: yup.string().required().length(6),
@@ -15,13 +18,15 @@ const verifyFormValidationSchema = yup.object().shape({
 const VerifyForm = withFormik<verifyFormProps, verifyFormValuesInterface>({
   mapPropsToValues: (props) => ({
     code: "",
-    token: "439c657c-864e-4329-93ff-58e07b083623",
+    token: props.token,
   }),
   validationSchema: verifyFormValidationSchema,
-  handleSubmit: async (values, { setFieldError }) => {
+  handleSubmit: async (values, { props, setFieldError }) => {
     try {
       const res = await callApi().post("/auth/login/verify-phone", values);
       console.log(res);
+      if (res.status === 200) await Router.push("/");
+      props.onClearTokenHandler();
     } catch (error) {
       if (error instanceof validationError) {
         //* In the future(other projects for example), this section must change based on the type of data received from the backend

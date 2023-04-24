@@ -1,19 +1,26 @@
 import type { NextPage } from "next";
-import { useCookies } from "react-cookie";
-import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
 import VerifyForm from "../../../app/form/auth/withPhone/verifyFrom";
-import { useAppSelector } from "../../../app/hooks";
-import { selectToken } from "../../../app/store/tokenSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { clearToken, selectToken } from "../../../app/store/tokenSlice";
 import { useEffect } from "react";
 import Router from "next/router";
 
 const LoginPhoneStep2: NextPage = () => {
   const token = useAppSelector(selectToken);
+  const dispatch = useAppDispatch();
 
   //* So user wont access this page without a token:
   useEffect(() => {
     if (token === "" || undefined) Router.push("/auth/phone-login");
-  }, [token]);
+    Router.beforePopState(() => {
+      clearTokenHandler();
+      return true;
+    });
+  }, [token, Router]);
+
+  const clearTokenHandler = () => {
+    dispatch(clearToken());
+  };
 
   return (
     <div>
@@ -28,7 +35,7 @@ const LoginPhoneStep2: NextPage = () => {
             Sign in to your account
           </h2>
 
-          <VerifyForm />
+          <VerifyForm onClearTokenHandler={clearTokenHandler} token={token} />
         </div>
       </div>
     </div>
