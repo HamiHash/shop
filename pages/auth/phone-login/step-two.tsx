@@ -4,8 +4,10 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { clearToken, selectToken } from "../../../app/store/tokenSlice";
 import { useEffect } from "react";
 import Router from "next/router";
+import GuestLayout from "../../../app/components/guestLayout";
+import { NextPageWithLayout } from "../../_app";
 
-const LoginPhoneStep2: NextPage = () => {
+const LoginPhoneStep2: NextPageWithLayout = () => {
   const token = useAppSelector(selectToken);
   const dispatch = useAppDispatch();
 
@@ -41,5 +43,7 @@ const LoginPhoneStep2: NextPage = () => {
     </div>
   );
 };
+
+LoginPhoneStep2.getLayout = (page) => <GuestLayout>{page}</GuestLayout>;
 
 export default LoginPhoneStep2;

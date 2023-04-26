@@ -1,3 +1,4 @@
+import GuestLayout from "../../../app/components/guestLayout";
 import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
 import { useAppDispatch } from "../../../app/hooks";
 import { setToken } from "../../../app/store/tokenSlice";
@@ -26,6 +27,6 @@ const LoginPhone: NextPageWithLayout = () => {
   );
 };
 
-LoginPhone.getLayout = (page) => <div className="bg-slate-300">{page}</div>;
+LoginPhone.getLayout = (page) => <GuestLayout>{page}</GuestLayout>;
 
 export default LoginPhone;

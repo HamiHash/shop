@@ -28,9 +28,9 @@ const VerifyForm = withFormik<verifyFormProps, verifyFormValuesInterface>({
       console.log(res);
       if (res.status === 200) {
         storeLoginToken(res.data?.user?.token);
-        Router.push("/");
+        await Router.push("/panel");
+        props.onClearTokenHandler();
       }
-      props.onClearTokenHandler();
     } catch (error) {
       if (error instanceof validationError) {
         //* In the future(other projects for example), this section must change based on the type of data received from the backend
