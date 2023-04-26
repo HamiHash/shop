@@ -5,6 +5,7 @@ import callApi from "../../../helpers/callApi";
 import Router from "next/router";
 import validationError from "../../../exceptions/validationError";
 import InnerVerifyForm from "../../../components/auth/withPhone/innerVerifyForm";
+import { storeLoginToken } from "../../../helpers/cookie";
 
 interface verifyFormProps {
   onClearTokenHandler: () => void;
@@ -25,7 +26,10 @@ const VerifyForm = withFormik<verifyFormProps, verifyFormValuesInterface>({
     try {
       const res = await callApi().post("/auth/login/verify-phone", values);
       console.log(res);
-      if (res.status === 200) await Router.push("/");
+      if (res.status === 200) {
+        storeLoginToken(res.data?.user?.token);
+        Router.push("/");
+      }
       props.onClearTokenHandler();
     } catch (error) {
       if (error instanceof validationError) {

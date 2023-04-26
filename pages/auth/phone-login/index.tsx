@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
 import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
 import { useAppDispatch } from "../../../app/hooks";
 import { setToken } from "../../../app/store/tokenSlice";
+import { NextPageWithLayout } from "../../_app";
 
-const LoginPhone: NextPage = () => {
+const LoginPhone: NextPageWithLayout = () => {
   const dispatch = useAppDispatch();
   const setTokenFunction = (token: string) => dispatch(setToken(token));
   return (
@@ -25,5 +25,7 @@ const LoginPhone: NextPage = () => {
     </div>
   );
 };
+
+LoginPhone.getLayout = (page) => <div className="bg-slate-300">{page}</div>;
 
 export default LoginPhone;
