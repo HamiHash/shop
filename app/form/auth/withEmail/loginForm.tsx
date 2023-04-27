@@ -23,7 +23,7 @@ const LoginForm = withFormik<LoginFormProps, LoginFormValuesInterface>({
       console.log(res);
       if (res.status === 200) {
         //* we use props passed from "login.tsx" here. (recieved it above in "handleSubmit")
-        props.onSetCookie("shopy-token", res.data.token, {
+        props.onSetCookie("shopy_token", res.data.token, {
           maxAge: 3600 * 24 * 30,
           domain: "localhost",
           path: "/",

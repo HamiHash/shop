@@ -8,6 +8,7 @@ const callApi = () => {
 
   axiosIstance.interceptors.request.use(
     (config) => {
+      config.withCredentials = true; //? For cookie and validation (rest is related to backend)
       return config;
     },
     (err) => {

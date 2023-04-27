@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { clearToken, selectToken } from "../../../app/store/tokenSlice";
 import { useEffect } from "react";
 import Router from "next/router";
-import GuestLayout from "../../../app/components/guestLayout";
+import GuestLayout from "../../../app/components/layouts/guestLayout";
 import { NextPageWithLayout } from "../../_app";
 
 const LoginPhoneStep2: NextPageWithLayout = () => {

@@ -1,17 +1,16 @@
 import useSWR from "swr";
-import Cookies from "universal-cookie";
 import callApi from "../helpers/callApi";
+import { useAppDispatch } from ".";
+import { updateUser } from "../store/userDataSlice";
 
 function useAuth() {
-  const cookies = new Cookies();
+  const dispatch = useAppDispatch();
 
   const { data, error } = useSWR("user-me", () => {
-    return callApi().get("/user", {
-      headers: {
-        authorization: cookies.get("shopy-token"),
-      },
-    });
+    return callApi().get("/user");
   });
+
+  if (data) dispatch(updateUser(data?.data?.user));
 
   console.log(data, error);
 

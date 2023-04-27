@@ -1,10 +1,11 @@
-import UserPanelLayout from "../../app/components/userPanelLayout";
+import UserPanelLayout from "../../app/components/layouts/userPanelLayout";
+import UserInfo from "../../app/components/panel/userInfo";
 import { NextPageWithLayout } from "../_app";
 
 const Panel: NextPageWithLayout = () => {
   return (
     <div>
-      <h2>User dashboard</h2>
+      <UserInfo />
     </div>
   );
 };

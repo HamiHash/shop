@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import Router from "next/router";
 
 interface Props {

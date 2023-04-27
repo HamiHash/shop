@@ -3,7 +3,7 @@ import LoginForm from "../../app/form/auth/withEmail/loginForm";
 import { useCookies } from "react-cookie";
 
 const Login: NextPage = () => {
-  const [cookie, setCookie] = useCookies(["shopy-token"]);
+  const [cookie, setCookie] = useCookies(["shopy_token"]);
 
   return (
     <div>

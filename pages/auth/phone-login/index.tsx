@@ -1,4 +1,4 @@
-import GuestLayout from "../../../app/components/guestLayout";
+import GuestLayout from "../../../app/components/layouts/guestLayout";
 import LoginFormPhone from "../../../app/form/auth/withPhone/loginFormPhone";
 import { useAppDispatch } from "../../../app/hooks";
 import { setToken } from "../../../app/store/tokenSlice";
